@@ -2,8 +2,9 @@
 #define _PACMAN_H
 
 #include <stdlib.h>
+#include <libpayload.h>
 
-/* 
+/*
 ** Curses already defines these, but if we ever change the renderer
 ** we'd have to go back and add these.
 */
@@ -81,7 +82,7 @@ typedef struct sGAMESTATE {
 	float		fSpecialDuration;
 	int		iSpecialChar;
 	GPOS		SpecialPos;
-	
+
 	/* Ghosts */
 	G_GHOST		Ghosts[MAX_GHOSTS];
 

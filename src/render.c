@@ -1,5 +1,5 @@
 
-#include <ncurses.h>
+#include <curses.h>
 #include <unistd.h>
 #include <string.h>
 #include "pacman.h"
@@ -119,7 +119,7 @@ static char *szAnimation[] = {	/* this is dependant on having 6 anim frames */
 };
 int c;
 
-	switch(ptr->Player.iLastValidDir) 
+	switch(ptr->Player.iLastValidDir)
 		{
 		case	PACKEY_LEFT:	c=0; break;
 		case	PACKEY_RIGHT:	c=1; break;
@@ -185,7 +185,7 @@ void Pac_FlashBoard(void *pCtx, GAME_STATE *ptr)
 {
 int x,y;
 int cnt=9;
-	
+
 	while(cnt--)
 		{
 		if (cnt&1) attron(A_BOLD);
@@ -219,7 +219,7 @@ char *szAnim = "|Vv_.+*X*+. ";
 		attroff(A_BOLD | COLOR_PAIR(PC_PACMAN));
 		Pac_Blit(pCtx);
 		usleep(150000);
-	} while(++iFrame < strlen(szAnim));	
+	} while(++iFrame < strlen(szAnim));
 }
 
 void Pac_RenderGameInfo(void *pCtx)

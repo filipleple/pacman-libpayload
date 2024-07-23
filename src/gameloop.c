@@ -1,10 +1,9 @@
 
 #include <stdio.h>
-#include <sys/time.h>
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
-#include <ncurses.h>		/* we still use the getch */
+#include <curses.h>		/* we still use the getch */
 #include "pacman.h"
 #include "gameloop.h"
 #include "player.h"
@@ -15,7 +14,7 @@
 
 /*
   I got a little bored I'm afraid writing bits of this, which is why
-  the animated death and flashing screen happen syncronously. To be done 
+  the animated death and flashing screen happen syncronously. To be done
   correctly, they should be pseudo-event driven like the rest of the program.
 */
 static void DrawDynamic(void *pCtx, GAME_STATE *ptr)
@@ -105,15 +104,15 @@ tGameEnd iGS;
 
 		iGS = Pac_GameLoop(pCtx, ptr);
 		switch(iGS) {
-			case	ePAC_SheetComplete: 
-					Pac_FlashBoard(pCtx, ptr); 
+			case	ePAC_SheetComplete:
+					Pac_FlashBoard(pCtx, ptr);
 					ptr->iLevel++;
 					Pac_ReinitialiseGame(ptr);
 					break;
-			case	ePAC_LifeLost:	 
+			case	ePAC_LifeLost:
 					--ptr->Player.iLives;
 					Pac_RenderRHS(pCtx, ptr);
-					Pac_AnimateDeadPlayer(pCtx, ptr); 
+					Pac_AnimateDeadPlayer(pCtx, ptr);
 					if (ptr->Player.iLives < 0)
 						return;
 					sleep(1);
@@ -123,7 +122,7 @@ tGameEnd iGS;
 			default:
 					break;
 			}
-	
+
 	} while(iGS != ePAC_UserQuit);
 }
 

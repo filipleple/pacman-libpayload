@@ -1,8 +1,10 @@
-#CFLAGS = -Wall -D_DEBUG -g
-#CFLAGS = -Wall 
-LDFLAGS = -lncurses
+override CC := ../../libpayload/bin/lpgcc
 
-pacman: pacman.o player.o ghosts.o pills.o render.o board.o gameloop.o 
+#CFLAGS = -Wall -D_DEBUG -g
+#CFLAGS = -Wall
+LDFLAGS = -lcurses
+
+pacman: pacman.o player.o ghosts.o pills.o render.o board.o gameloop.o
 pacman.o: pacman.h render.h gameloop.h
 player.o: pacman.h player.h ghosts.h pills.h board.h
 ghosts.o: pacman.h ghosts.h board.h

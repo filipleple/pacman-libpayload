@@ -6,6 +6,7 @@
 #include "pacman.h"
 #include "render.h"
 #include "gameloop.h"
+#include "libpayload.h"
 
 void GetMarqueeText(GAME_STATE *ptr)
 {
@@ -14,7 +15,7 @@ int i;
 char *pc;
 
 	ptr->pMarquee = 0;
-	if (fp)		
+	if (fp)
 		{
 		fseek(fp, 0, SEEK_END);
 		ptr->iMarqueeSize = ftell(fp);
@@ -31,11 +32,11 @@ char *pc;
 			}
 		fclose(fp);
 		}
-}	
-		
+}
+
 int main(int argc, char **argv)
 {
-GAME_STATE game; 
+GAME_STATE game;
 void *pRender;
 
 	game.iHighScore = 9710;
