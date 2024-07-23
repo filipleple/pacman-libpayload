@@ -194,7 +194,7 @@ int cnt=9;
 				DrawSquare(pCtx, ptr, x, y);
 		if (cnt&1) attroff(A_BOLD);
 		refresh();
-		usleep(300000);
+		udelay(300000);
 		}
 }
 
@@ -218,7 +218,7 @@ char *szAnim = "|Vv_.+*X*+. ";
 		mvaddch(ptr->Player.Pos.y, ptr->Player.Pos.x, szAnim[iFrame]);
 		attroff(A_BOLD | COLOR_PAIR(PC_PACMAN));
 		Pac_Blit(pCtx);
-		usleep(150000);
+		udelay(150000);
 	} while(++iFrame < strlen(szAnim));
 }
 

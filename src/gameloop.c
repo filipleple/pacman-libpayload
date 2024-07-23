@@ -100,7 +100,7 @@ tGameEnd iGS;
 		/* Start of sheet/new life */
 		DrawDynamic(pCtx, ptr);
 		Pac_Blit(pCtx);
-		sleep(2);
+		delay(2);
 
 		iGS = Pac_GameLoop(pCtx, ptr);
 		switch(iGS) {
@@ -115,7 +115,7 @@ tGameEnd iGS;
 					Pac_AnimateDeadPlayer(pCtx, ptr);
 					if (ptr->Player.iLives < 0)
 						return;
-					sleep(1);
+					delay(1);
 					Pac_InitialiseGhosts(ptr);
 					Pac_ReinitialisePlayer(ptr);
 					break;
