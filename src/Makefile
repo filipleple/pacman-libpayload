@@ -4,6 +4,7 @@ override LD := ../../libpayload/bin/lpgcc
 #CFLAGS = -Wall -D_DEBUG -g
 #CFLAGS = -Wall
 LDFLAGS = -lcurses -nostdlib
+CFLAGS = -Os -fno-reorder-functions
 
 pacman: pacman.o player.o ghosts.o pills.o render.o board.o gameloop.o
 pacman.o: pacman.h render.h gameloop.h

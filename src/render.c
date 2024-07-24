@@ -18,6 +18,9 @@
 void fwrite(){
 
 }
+void fputs(){
+
+}
 
 void *Pac_InitRender(void)
 {
