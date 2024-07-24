@@ -1,5 +1,5 @@
 /*
-** Pacman - In curses
+** Pacman - In curses, for libpayload
 */
 #include <ctype.h>
 #include "pacman.h"
@@ -7,39 +7,10 @@
 #include "gameloop.h"
 #include "libpayload.h"
 
-// void GetMarqueeText(GAME_STATE *ptr) {
-// 	FILE *fp = fopen("pactext", "r");
-// 	int i;
-// 	char *pc;
-
-// 	ptr->pMarquee = 0;
-// 	if (fp)	{
-// 		fseek(fp, 0, SEEK_END);
-// 		ptr->iMarqueeSize = ftell(fp);
-// 		if ((ptr->pMarquee = malloc(ptr->iMarqueeSize))){
-// 			fseek(fp,0,SEEK_SET);
-// 			fread(ptr->pMarquee, 1, ptr->iMarqueeSize, fp);
-// 			pc = ptr->pMarquee;
-// 			for(i=0;i<ptr->iMarqueeSize;i++,pc++)
-// 				if (isalnum(*pc) || ispunct(*pc))
-// 					;/*empty*/
-// 				else
-// 					*pc = ' ';
-// 		}
-// 		fclose(fp);
-// 	}
-// }
-
-
-
-
-
-
-
 void GetMarqueeText(GAME_STATE *ptr)
 {
     // Hardcoded marquee text (replace this with the actual text if known)
-    const char *marqueeText = "Pac-Man: Insert Coin to Start! Use Arrow Keys to Move. Eat All Dots to Win!";
+    const char *marqueeText = "Pac-Man: Insert Coin to Start! Use X - left; C - right; K - up; M - down to Move. Eat All Dots to Win!  ";
 
     ptr->iMarqueeSize = strlen(marqueeText);
     ptr->pMarquee = (char *)malloc(ptr->iMarqueeSize + 1); // Allocate memory for the text plus null terminator
@@ -58,16 +29,6 @@ void GetMarqueeText(GAME_STATE *ptr)
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 int main(int argc, char **argv) {
 	GAME_STATE game;

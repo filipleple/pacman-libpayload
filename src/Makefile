@@ -14,9 +14,6 @@ gameloop.o: pacman.h gameloop.h player.h ghosts.h pills.h board.h render.h
 render.o: pacman.h render.h board.h
 pills.o: pacman.h pills.h board.h
 
-install:
-	cat *.c *.h >pactext
-
 clean:
 	-rm -f *.o pacman pactext
 

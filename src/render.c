@@ -14,6 +14,7 @@
 #define PC_EDIBLE_GHOST		6
 #define PC_GHOST		20
 
+// temporary stub to resolve linker problems
 void fwrite(){
 
 }
@@ -229,7 +230,8 @@ char *szAnim = "|Vv_.+*X*+. ";
 void Pac_RenderGameInfo(void *pCtx)
 {
 char *s1 = "ASCII Pacman - Steven Goodwin 2002";
-char *s2 = "Released under the GPL";
+char *s2 = "Ported to libpayload by F.L, 2024";
+char *s3 = "Released under the GPL";
 
 	clear();
 	attron(COLOR_PAIR(PC_PILL));
@@ -237,6 +239,9 @@ char *s2 = "Released under the GPL";
 	attroff(COLOR_PAIR(PC_PILL));
 	attron(COLOR_PAIR(PC_PACMAN));
 	mvprintw(3,CenteredX(s2), s2);
+	attroff(COLOR_PAIR(PC_PACMAN));
+	attron(COLOR_PAIR(PC_PACMAN));
+	mvprintw(4,CenteredX(s3), s3);
 	attroff(COLOR_PAIR(PC_PACMAN));
 }
 
