@@ -14,6 +14,10 @@
 #define PC_EDIBLE_GHOST		6
 #define PC_GHOST		20
 
+void fwrite(){
+
+}
+
 void *Pac_InitRender(void)
 {
 int gcol[] = { COLOR_RED, COLOR_GREEN, COLOR_MAGENTA, COLOR_CYAN, };

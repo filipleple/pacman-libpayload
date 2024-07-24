@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "pacman.h"
 #include "pills.h"
 #include "board.h"
@@ -13,7 +12,7 @@ char c;
 	ptr->iSpecialChar = ptr->iLevel;
 	ptr->SpecialPos.x = ptr->SpecialPos.y = 14;
 	Pac_RespawnSpecial(ptr);
-	
+
 	i=0;
 	for(y=0;y<ptr->iMapHeight;y++)
 		for(x=0;x<ptr->iMapWidth;x++)
@@ -37,7 +36,7 @@ char c;
 void Pac_UpdatePills(GAME_STATE *ptr, float telaps)
 {
 	ptr->iPP_Timecum += telaps;
-	if (ptr->iPP_Timecum > 0.5f) 
+	if (ptr->iPP_Timecum > 0.5f)
 		{
 		ptr->iPP_Timecum = 0;
 		ptr->iPP_Flash ^= 1;

@@ -1,8 +1,9 @@
 override CC := ../../libpayload/bin/lpgcc
+override LD := ../../libpayload/bin/lpgcc
 
 #CFLAGS = -Wall -D_DEBUG -g
 #CFLAGS = -Wall
-LDFLAGS = -lcurses
+LDFLAGS = -lcurses -nostdlib
 
 pacman: pacman.o player.o ghosts.o pills.o render.o board.o gameloop.o
 pacman.o: pacman.h render.h gameloop.h
