@@ -7,10 +7,9 @@
 #define GIH_GATEWAY	2
 #define GIH_OUTSIDE	0
 
-static char GetNextChar(GAME_STATE *ptr, G_GHOST *pGhost)
-{
-int x, y;
-char c;
+static char GetNextChar(GAME_STATE *ptr, G_GHOST *pGhost) {
+	int x, y;
+	char c;
 
 	x = pGhost->Pos.x; y = pGhost->Pos.y;
 	switch(pGhost->Direction)
@@ -26,17 +25,15 @@ char c;
 		return '\0';
 }
 
-static int IsNextMoveValid(GAME_STATE *ptr, G_GHOST *pGhost)
-{
-char c;
+static int IsNextMoveValid(GAME_STATE *ptr, G_GHOST *pGhost) {
+	char c;
 
 	c = GetNextChar(ptr, pGhost);
 	return Pac_IsOpenArea(c);
 }
 
-static void HomedGhost(GAME_STATE *ptr, G_GHOST *pGhost)
-{
-char c;
+static void HomedGhost(GAME_STATE *ptr, G_GHOST *pGhost) {
+	char c;
 
 	switch(pGhost->iInHome)
 		{
@@ -67,15 +64,14 @@ char c;
 		}
 }
 
-static void MoveGhost(GAME_STATE *ptr, G_GHOST *pGhost)
-{
-int tries=0;
+static void MoveGhost(GAME_STATE *ptr, G_GHOST *pGhost) {
+	int tries=0;
 
 	if (!IsNextMoveValid(ptr, pGhost))
 		{ /* must be either 1 or 2 valid directions */
 		tDir w1,w2;
 
-		switch(pGhost->Direction) 
+		switch(pGhost->Direction)
 			{
 			case eDIR_Right:
 			case eDIR_Left:	w1=eDIR_Up, w2=eDIR_Down; break;
@@ -122,17 +118,14 @@ int tries=0;
 	if (pGhost->Pos.x >= ptr->iMapWidth) pGhost->Pos.x = 0;
 }
 
-static void DormantGhost(GAME_STATE *ptr, G_GHOST *pGhost)
-{
+static void DormantGhost(GAME_STATE *ptr, G_GHOST *pGhost) {
 	/* Wake him up?? */
 	if (RND(30) < 2)
 		Pac_ActivateGhost(pGhost, 12,10,eDIR_Left);
-	
 }
 
-void Pac_InitialiseGhosts(GAME_STATE *ptr)
-{
-int i;
+void Pac_InitialiseGhosts(GAME_STATE *ptr) {
+	int i;
 
 	for(i=0;i<MAX_GHOSTS;i++)
 		ptr->Ghosts[i].bActive = 0;
@@ -152,11 +145,9 @@ void Pac_ActivateGhost(G_GHOST *pGhost, int x, int y, tDir eDir)
 	pGhost->iInHome = GIH_SHUFFLE;
 }
 
-void Pac_UpdateGhosts(GAME_STATE *ptr, float telaps)
-{
-int i;
-	for(i=0;i<MAX_GHOSTS;i++)
-		{
+void Pac_UpdateGhosts(GAME_STATE *ptr, float telaps) {
+	int i;
+	for(i=0;i<MAX_GHOSTS;i++) {
 		ptr->Ghosts[i].fEdibleDuration -= telaps;
 		if (ptr->Ghosts[i].fEdibleDuration < 0)
 			ptr->Ghosts[i].fEdibleDuration = 0;
@@ -167,13 +158,11 @@ int i;
 			HomedGhost(ptr, &ptr->Ghosts[i]);
 		else
 			MoveGhost(ptr, &ptr->Ghosts[i]);
-		}
-
+	}
 }
 
-void Pac_GhostsAreVunerable(GAME_STATE *ptr, float fDuration)
-{
-int i;
+void Pac_GhostsAreVunerable(GAME_STATE *ptr, float fDuration) {
+	int i;
 
 	for(i=0;i<MAX_GHOSTS;i++)
 		if (ptr->Ghosts[i].bActive && ptr->Ghosts[i].iInHome==GIH_OUTSIDE)

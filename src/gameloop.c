@@ -30,23 +30,22 @@ static void DrawDynamic(void *pCtx, GAME_STATE *ptr)
 	Pac_RenderRHS(pCtx, ptr);
 }
 
-tGameEnd Pac_GameLoop(void *pCtx, GAME_STATE *ptr)
-{
-int c,keypress;
-float telaps;
-struct timeval iTk, iTk2, tvTelaps;
+tGameEnd Pac_GameLoop(void *pCtx, GAME_STATE *ptr) {
+	int c,keypress;
+	float telaps;
+	struct timeval iTk, iTk2, tvTelaps;
 
-do {
-keypress = ptr->Player.iLastValidDir;
-gettimeofday(&iTk, 0);
+	do {
+	keypress = ptr->Player.iLastValidDir;
+	gettimeofday(&iTk, 0);
 
-/* Wait 1/10 sec , getting whatever key's been pressed */
+	/* Wait 1/10 sec , getting whatever key's been pressed */
 
-do {
-	c = getch();
-	if (c != EOF)
-if (c != ptr->Player.iLastValidDir)
-		keypress = c;
+	do {
+		c = getch();
+		if (c != EOF)
+	if (c != ptr->Player.iLastValidDir)
+			keypress = c;
 
 	if (c=='q' || c=='Q')
 		return ePAC_UserQuit;
@@ -62,6 +61,7 @@ move(21,30); printw(" clock=%ld  telaps=%f key=%c last=%c", clock(), telaps, key
 move(23,30); printw("  pills=%d", ptr->iDotsLeft);
 printw("tv %d + %d/1000", tvTelaps.tv_sec, tvTelaps.tv_usec);
 #endif
+
 	if (telaps < 0) { fprintf(stderr, "how?????"); break; }
 	} while(telaps < 0.1f);
 
@@ -93,9 +93,8 @@ printw("tv %d + %d/1000", tvTelaps.tv_sec, tvTelaps.tv_usec);
 	} while(1);
 }
 
-void Pac_MainGame(void *pCtx, GAME_STATE *ptr)
-{
-tGameEnd iGS;
+void Pac_MainGame(void *pCtx, GAME_STATE *ptr) {
+	tGameEnd iGS;
 
 	Pac_InitialiseGame(ptr);
 	Pac_RenderGameInfo(pCtx);
@@ -131,10 +130,10 @@ tGameEnd iGS;
 }
 
 void timersub(struct timeval *a, struct timeval *b, struct timeval *res) {
-    res->tv_sec = a->tv_sec - b->tv_sec;
-    res->tv_usec = a->tv_usec - b->tv_usec;
-    if (res->tv_usec < 0) {
-        res->tv_sec -= 1;
-        res->tv_usec += 1000000;
-    }
+	res->tv_sec = a->tv_sec - b->tv_sec;
+	res->tv_usec = a->tv_usec - b->tv_usec;
+	if (res->tv_usec < 0) {
+		res->tv_sec -= 1;
+		res->tv_usec += 1000000;
+	}
 }
