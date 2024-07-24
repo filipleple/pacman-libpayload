@@ -17,6 +17,10 @@
   the animated death and flashing screen happen syncronously. To be done
   correctly, they should be pseudo-event driven like the rest of the program.
 */
+
+void timersub(struct timeval *a, struct timeval *b, struct timeval *res);
+
+
 static void DrawDynamic(void *pCtx, GAME_STATE *ptr)
 {
 	Pac_DrawBoard(pCtx, ptr);
@@ -126,4 +130,11 @@ tGameEnd iGS;
 	} while(iGS != ePAC_UserQuit);
 }
 
-
+void timersub(struct timeval *a, struct timeval *b, struct timeval *res) {
+    res->tv_sec = a->tv_sec - b->tv_sec;
+    res->tv_usec = a->tv_usec - b->tv_usec;
+    if (res->tv_usec < 0) {
+        res->tv_sec -= 1;
+        res->tv_usec += 1000000;
+    }
+}
